@@ -8,16 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var toggleState = false
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            ChildView(isToggled: $toggleState)
+            Text("Toggle State: \(toggleState.description)")
         }
-        .padding()
     }
 }
+ 
+
+struct ChildView: View {
+    @Binding var isToggled: Bool
+    
+    var body: some View {
+        Toggle("Toggle", isOn: $isToggled)
+        
+        
+        
+        
+        
+        ForEach((1...10).reversed(), id: \.self) {
+               Text("\($0)…")
+           }
+        
+        
+        
+        
+        
+        
+        
+    }
+}
+
 
 #Preview {
     ContentView()
